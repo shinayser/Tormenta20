@@ -51,6 +51,16 @@
     }
   },
   {
+    "nome": "Bebum",
+    "detalhes": {
+      "efeito": "especial",
+      "descricao": [
+        "-5 em testes baseados em Destreza e Carisma.",
+        "Se ficar bebum (ou embriagado) novamente, cai incosciente."
+      ]
+    }
+  },
+  {
     "nome": "Caído",
     "detalhes": {
       "efeito": "Você está caído.",
@@ -128,6 +138,16 @@
         "No início de seus turnos, o personagem sofre 1d6 pontos de dano de fogo.",
         "O personagem pode gastar uma ação padrão para apagar o fogo com as mãos.",
         "Imersão em água também apaga as chamas."
+      ]
+    }
+  },
+  {
+    "nome": "Embriagado",
+    "detalhes": {
+      "efeito": "especial",
+      "descricao": [
+        "-2 em testes baseados em Destreza e Carisma.",
+        "Se ficar embriagado novamente, fica bebum."
       ]
     }
   },

@@ -503,6 +503,16 @@ function Vestuarios(
         $objects += $ameacas
     }
 
+    if ($includeDeusesDeArton) {
+        $path = _LoadPath 'vestuarios.json' 'json-deuses-e-herois/deuses'
+        $deuses += Get-Content $path | ConvertFrom-Json
+        $deuses | ForEach-Object {
+            Add-Member -InputObject $_ -MemberType NoteProperty -Name 'set' -Value 'deuses'
+        }
+
+        $objects += $deuses
+    }
+
 
     $objects = $objects | Sort-Object nome
    
@@ -912,6 +922,24 @@ function Alimentacao(
     
     if ($Descricao) {
         $objects = $objects | Where-Object { $_.Descricao -like "*$Descricao*" }
+    }
+
+    if ($objects.Length -le 3) {
+        $objects | Format-List
+    }
+    else {
+        $objects
+    }
+}
+
+function Bebidas(
+    [string]$Nome
+) {
+    $path = _LoadPath 'bebidas.json' 'json-deuses-e-herois/herois'
+    $objects = Get-Content $path | ConvertFrom-Json
+
+    if ($Nome) {
+        $objects = $objects | Where-Object { $_.Nome -like "*$Nome*" }
     }
 
     if ($objects.Length -le 3) {
@@ -1486,6 +1514,13 @@ function Busca-Item(
     if ($busca.Length -gt 0) {
         Write-Host "# Acessorios" -ForegroundColor blue
         $busca
+    }
+    if ($includeHeroisDeArton) {
+        $busca = Bebidas -Nome $Nome
+        if ($busca.Length -gt 0) {
+            Write-Host "# Bebidas" -ForegroundColor blue
+            $busca
+        }
     }
 }
 
